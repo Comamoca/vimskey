@@ -15,7 +15,8 @@ export * as Misskey from "npm:misskey-js@0.0.15";
 export * as zod from "https://deno.land/x/zod@v3.16.1/mod.ts";
 export * as path from "https://deno.land/std@0.171.0/path/mod.ts";
 export * as fs from "https://deno.land/std@0.171.0/fs/mod.ts";
-export { open } from "https://deno.land/x/open@v0.0.5/index.ts";
+// import open from "npm:open";
+export { default as open } from "npm:open";
 
 // libs
 export * as auth from "./libs/auth.ts";
