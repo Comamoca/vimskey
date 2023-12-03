@@ -2,11 +2,11 @@ import {
   auth,
   Denops,
   dps,
+  fn,
   helper,
   open,
   system,
   unknownutil,
-  fn,
   zod,
 } from "./deps.ts";
 import { connectTimeline, sendNoteReq, sendRenoteReq } from "./libs/misskey.ts";
@@ -64,7 +64,7 @@ export const actionGetToken = async (denops: Denops) => {
   });
   const miauth = auth.useMiauth(origin);
 
-  await open(miauth.authUrl());
+  open(miauth.authUrl());
   await dps.waitPressEnter(
     denops,
     "After authentication is complete, press enter...",
@@ -98,11 +98,11 @@ export const actionSendNote = async (denops: Denops) => {
 };
 
 export const actionRenote = async (denops: Denops) => {
-  const cursorText = await fn.getline(denops, '.')
-  const id = cursorText.match(/(?<=<mk-id>).*(?=<\/mk-id>)/)
+  const cursorText = await fn.getline(denops, ".");
+  const id = cursorText.match(/(?<=<mk-id>).*(?=<\/mk-id>)/);
   if (id) {
-    await sendRenoteReq(id[0])
+    await sendRenoteReq(id[0]);
   } else {
-    return console.error("[Vimskey] Renote id not found.")
+    return console.error("[Vimskey] Renote id not found.");
   }
-}
+};
